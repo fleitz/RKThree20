@@ -698,8 +698,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RKThree20/RKThree20-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/../RestKit\"",
-					"\"$(BUILT_PRODUCTS_DIR)/../../RestKit\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
 					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
 					"\"$(SRCROOT)/../three20/Build/Products/three20\"",
@@ -707,7 +706,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = ../RestKit/RestKit/Three20;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../Headers/RestKit/Three20;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -722,8 +722,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RKThree20/RKThree20-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
-					"\"$(BUILT_PRODUCTS_DIR)/../RestKit\"",
-					"\"$(BUILT_PRODUCTS_DIR)/../../RestKit\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../Headers\"",
 					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
 					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
 					"\"$(SRCROOT)/../three20/Build/Products/three20\"",
@@ -731,7 +730,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = "$(PUBLIC_HEADERS_FOLDER_PATH)/Private";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = ../RestKit/RestKit/Three20;
+				PUBLIC_HEADERS_FOLDER_PATH = ../../Headers/RestKit/Three20;
+				SKIP_INSTALL = YES;
 			};
 			name = Release;
 		};
