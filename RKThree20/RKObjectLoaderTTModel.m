@@ -183,7 +183,7 @@ static NSString* const kDefaultLoadedTimeKey = @"RKRequestTTModelDefaultLoadedTi
 	_isLoading = NO;
 
     // TODO: pass error message?
-    NSError* error = [NSError errorWithDomain:RKRestKitErrorDomain code:RKRequestUnexpectedResponseError userInfo:nil];
+    NSError* error = [NSError errorWithDomain:RKErrorDomain code:RKRequestUnexpectedResponseError userInfo:nil];
 	[self didFailLoadWithError:error];
 }
 
@@ -215,20 +215,20 @@ static NSString* const kDefaultLoadedTimeKey = @"RKRequestTTModelDefaultLoadedTi
 - (void)load {
     Class managedObjectClass = NSClassFromString(@"NSManagedObject");
 	RKManagedObjectStore* store = [RKObjectManager sharedManager].objectStore;
-	NSArray* cacheFetchRequests = nil;
+	NSFetchRequest* cacheFetchRequest = nil;
 	if (store.managedObjectCache) {
-		cacheFetchRequests = [store.managedObjectCache fetchRequestsForResourcePath:self.resourcePath];
+		cacheFetchRequest = [store.managedObjectCache fetchRequestForResourcePath:self.resourcePath];
 	}
     
     // Reset in case we are reusing the object loader (model was reloaded).
     [self.objectLoader reset];
     
-	if (!store.managedObjectCache || !cacheFetchRequests || _cacheLoaded) {
+	if (!store.managedObjectCache || !cacheFetchRequest || _cacheLoaded) {
 		_isLoading = YES;
 		[self didStartLoad];
 		[self.objectLoader send];
-	} else if (cacheFetchRequests && !_cacheLoaded && managedObjectClass) {
-        NSArray* objects = [managedObjectClass objectsWithFetchRequests:cacheFetchRequests];
+	} else if (cacheFetchRequest && !_cacheLoaded && managedObjectClass) {
+        NSArray* objects = [managedObjectClass objectsWithFetchRequest:cacheFetchRequest];
         if ([objects count] > 0 && NO == [self isOutdated]) {
             _cacheLoaded = YES;
             [self modelsDidLoad:objects];
