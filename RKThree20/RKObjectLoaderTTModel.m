@@ -17,7 +17,6 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-
 #import <RestKit/RKManagedObjectStore.h>
 #import <RestKit/NSManagedObject+ActiveRecord.h>
 #import <RestKit/Network.h>
@@ -216,14 +215,12 @@ static NSString* const kDefaultLoadedTimeKey = @"RKRequestTTModelDefaultLoadedTi
     Class managedObjectClass = NSClassFromString(@"NSManagedObject");
 	RKManagedObjectStore* store = [RKObjectManager sharedManager].objectStore;
 	NSFetchRequest* cacheFetchRequest = nil;
-	if (store.managedObjectCache) {
-		cacheFetchRequest = [store.managedObjectCache fetchRequestForResourcePath:self.resourcePath];
-	}
+    
     
     // Reset in case we are reusing the object loader (model was reloaded).
     //[self.objectLoader reset];
     
-	if (!store.managedObjectCache || !cacheFetchRequest || _cacheLoaded) {
+	if (_cacheLoaded) {
 		_isLoading = YES;
 		[self didStartLoad];
 		[self.objectLoader send];
