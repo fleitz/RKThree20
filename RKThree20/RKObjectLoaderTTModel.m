@@ -221,7 +221,7 @@ static NSString* const kDefaultLoadedTimeKey = @"RKRequestTTModelDefaultLoadedTi
 	}
     
     // Reset in case we are reusing the object loader (model was reloaded).
-    [self.objectLoader reset];
+    //[self.objectLoader reset];
     
 	if (!store.managedObjectCache || !cacheFetchRequest || _cacheLoaded) {
 		_isLoading = YES;
